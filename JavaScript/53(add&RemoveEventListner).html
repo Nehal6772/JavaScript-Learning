@@ -1,0 +1,55 @@
+<!-- 
+
+    ==> REMOVE EVENT LISTERNER ONLY WORKS IN 2 CONDITIONS:
+
+        1) EVENT IS REGISTERED USING addEventListener() METHOD.
+
+        2) addEventListener() ONLY USE NORMAL FUNCTION IN ARG 2.
+            -> WITH ANONYMOUS FUNCTION, IT WILL NOT WORK.
+
+    SYNTAX FOR ADD EVENT: 
+    
+    obj_name.addEventListener("event name", function);
+
+
+    SYNTAX FOR REMOVE EVENT:  
+    
+    obj_name.removeEventListener("event name", function);        
+
+    
+
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remove Event Listner</title>
+</head>
+<body>
+    <button id="btn">
+        Click me
+    </button>
+
+</body>
+    <script>
+        let btn = document.getElementById("btn");
+    
+        function clickOne(){
+            console.log("this is first click");
+        }
+
+        function clickTwo(){
+            console.log("this is second click");
+        }
+        
+        btn.addEventListener("click", clickOne);
+        btn.addEventListener("click", clickTwo);
+
+        // clickTwo() function will be removed.
+        btn.removeEventListener("click", clickTwo);
+
+    </script>
+</html>
