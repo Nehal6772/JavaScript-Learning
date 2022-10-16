@@ -1,0 +1,70 @@
+<!-- 
+    ==> THERE ARE 5 METHODS RELATED TO ATTRIBUTE OF AN ELEMENT:
+
+    1) obj_name.setAttribute("attr_name", "attr_value");
+    ==> SET attr_name = "attr_value" into HTML ELEMENT.
+
+    2) obj_name.getAttribute("attr_name");
+    ==> RETURN: ATTRIBUTE VALUE
+
+    3) obj_name.getAttributeNames():
+    ==> RETURN: MULTIPLE ATTRIBUTE'S NAME OF AN ELEMENT. 
+    ==> DO NOT RETURN ATTRIBUTE'S VALUE;
+    ==> EX: ['ID', 'CLASS', 'NAME'];
+
+    4) obj_name.removeAttribute("attr_name");
+    ==> REMOVE THE ATTRIBUTE AND ITS VALUE FROM THE HTML ELEMENT.
+
+    5) obj_name.hasAttribute("attr_name");
+    ==> RETURNS BOOLEAN VALUE;
+    ==> TRUE: IF ATTRIBUTE IS PRESENT IN ELEMENT, ELSE FALSE
+
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>setAttribute() Method</title>
+</head>
+<body>
+    <button id = "btn" value="abc">Submit</button>
+</body>
+    <script>
+        let temp = document.getElementById("btn");
+
+        // ADD ATTRIBUTE CLASS = "NEHAL";
+        temp.setAttribute("class", "nehal"); // class="nehal";
+
+        console.log(temp.getAttribute("class")); // nehal
+
+        console.log(temp.getAttributeNames()); // (3) ['id', 'value' 'class', ]
+
+
+
+        // ADD ATTRIBUTE NEME = "SUBMIT" SUING TAG NAME
+        let temp1 = document.getElementsByTagName("button");
+        console.log(temp1);
+
+        for(let i = 0; i<temp1.length; i++)
+        {
+            temp1[i].setAttribute("name", "form"); 
+            console.log(temp1[i].getAttribute("name")); // submit
+            console.log(temp1[i].getAttributeNames()); //(4)['id', 'value', 'class', 'name']
+        }
+
+        
+        // REMOVE ATTRIBUTE VALUE = "ABC" FROM THE BUTTON ELEMENT.
+        temp.removeAttribute("value");
+
+
+
+        // WHETHER THE ATTRIBUTE IS PRESENT IN THE ELEMENT OR NOT?
+        console.log(temp.hasAttribute("value")); // FALSE BECAUSE VALUE HAD DELETED.
+        console.log(temp.hasAttribute("id")); // TRUE: ID IS PRESENT IN ELEMENT.
+
+
+    </script>
+</html>

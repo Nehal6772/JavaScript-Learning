@@ -1,0 +1,132 @@
+<!-- 
+    CREATE NEW HTML ELEMENT AND ADD IT. 
+    (APPEND IT AFTER EXISTING ELEMENT.)
+
+    ==> DO NOT REPLACE THE CURRENT HTML ELEMENT, INSTEAD APPEND NEWLY CREATED ELEMENT JUST AFTER EXISTING ELEMENT.
+
+    ==> createElement(): METHOD IS USED TO CREATE NEW HTML ELEMENT (TAG).
+
+    ==> appendChild(): METHOD IS USED TO APPEND THE CHILD ELEMENT AFTER JUST ITS PARENT ELEMENT.
+
+    ----
+    ==> WE CAN ADD CONTENT INSIDE THE NEWLY CREATED ELEMENT (TAG) USING THREE WAYS.
+
+        1. USING innerHTML PROPERTY: (SET innerHTML)
+        ==> IT WILL CREATE AND APPEND HTML CONTENT TO AN ELEMENT.
+
+        2. USING createTextNode() METHOD:
+        ==> IT WILL ONLY CREATE HTML CONTENT
+        ==> TO ADD THAT HTML CONTENT TO AN ELEMENT WE AGAIN NEED appendChild() METHOD.
+
+        3. USING textContent PROPERTY: (JUST LIKE innerHTML)
+        ==> IT WILL CREATE AND APPEND HTML CONTENT TO AN ELEMENT.
+        ==> WE CAN SET AND GET CONTENT LIKE 'innerHTML'.
+
+
+    ----
+
+    ==> IF WE WANT TO ADD ATTRIBUTES IN NEWLY CREATED ELEMENT USING createElement(): (ATTRIBUTES: CLASS, ID, CSS ETC..)
+
+        EX: OBJ_NAME.ATTRIBUTE.NAME = "VALUE";
+        ===> temp.className = "myClass";
+
+    ==> OBJ_NAME.getAttributeNames(): WE CAN KNOW THE ATTRIBUTES OF ANY HTML ELEMENT.
+    
+-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create & Append Element</title>
+</head>
+<body>
+    
+    <div id="index">
+        <p>This is existing element inside paragraph.</p>
+
+        <!-- 1) WE WANT TO CREATE NEW ELEMENT AND 'APPEND AFTER' THIS EXISTING ELEMENT. -->
+
+        <!-- <H2> TAG WILL APPEND HERE. -->
+
+    </div>
+
+    <!-- 2) NOW WE WANT TO CREATE NEW ELEMENT AND 'APPEND AFTER' MAIN BODY. -->
+
+    <!-- <li> TAG WILL APPEND HERE. -->
+
+    <ul id="newUl">
+        <li>List 1</li>
+        <li>List 2</li>
+        <li>List 3</li>
+        <li>List 4</li>
+
+        <!-- TASK: WE WANT TO ADD LIST N AFTER LIST 4 -->
+    </ul>
+
+</body>
+    <script>
+
+        let getDiv = document.getElementById("index"); // DIV 
+        
+        // CREATE NEW ELEMENT YOU WHICH TO APPEND.
+        let temp = document.createElement("h2");
+
+        // TEXT YOU WANT TO ADD. ALTERNATIVE OPTION OF innerHTML
+        let demo = document.createTextNode("This is newly created element.");
+
+        // APPEND HTML CONTENT TO NEW ELEMENT.
+        temp.appendChild(demo);
+
+        // ALTERNATIVE WAY OF ADDING TEXT TO HTML ELEMENT
+        //temp.innerHTML = "This is newly created element.";
+        
+        // APPEND CREATED ELEMENT AFTER EXISTING ELEMENT.
+        getDiv.appendChild(temp);
+       
+
+        // ADD ATTRIBUTES TO NEWLY CREATED ELEMENT H2.
+        temp.className = "myClass intro"; // CAN GIVE MORE THAN ONE CLASS
+        temp.id = "myId"; // CAN GIVE MORE THAN ONE ID
+
+        // ARRAY OF TWO ATTRIBUTES. LENGTH: 2
+        console.log(temp.getAttributeNames()); // CLASS AND ID
+       
+        // ------------------------------------------------------------
+
+        // -- APPEND NEW ELEMENT IN MAIN BODY, NEXT SIBLING OF DIV. --
+
+        // CREATE NEW ELEMENT
+        let myLi = document.createElement("li");
+
+        // USING 3RD WAY TO ADD HTML CONTENT TO AN ELEMENT LIKE innerHTML
+        myLi.textContent = "My TO-DO list"; // SET CONTENT (TEXT)
+
+        console.log(myLi.textContent); // GET CONTENT (TEXT)
+
+        document.body.appendChild(myLi);
+
+        // THIS IS VALID : ALTERNATIVE OPTION: TO ADD IN MAIN BODY
+        // let a = document.getElementsByTagName("body");
+        
+        // for(let i = 0; i<a.length; i++){
+        //     a[i].appendChild(myLi);
+        // }
+
+        // ------------------------------------------------------------
+
+        // TASK TO ADD ONE MORE LI IN TO UL LIST. (LIST N)
+
+        let getUl = document.getElementById("newUl");
+        console.log(getUl); // WHOLE UL GET SELETED
+
+        let newLi = document.createElement("li")
+        newLi.textContent = "List n";
+
+        getUl.appendChild(newLi);
+        
+    </script>
+</html>

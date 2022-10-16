@@ -1,0 +1,138 @@
+<!-- 
+    ==> THERE ARE TWO TYPE OF SELECTION FOR ANY ELEMENT.
+
+        1. DIRECT SELECTION: SELECT ELEMENT DIRECTLY THROUGH ANY DOM METHODS.
+
+        2. INDIRECT SELECTION: FIRST SELECT OTHER ELEMENT AND THEN COME TO REQUIRED ELEMENT. (VIA OTHER ELEMENT)
+
+        ==> ELEMENT IN INDIRECT SELECTION COULD BY ANY ONE:
+            1. IT COULD BE PARENT OF SELECTED ELEMENT.
+            2. IT COULD BE CHILD OF SELECTED ELEMENT.
+            3. IT COULD BE SIBLING OF SELECTED ELEMENT. 
+
+    ==> WHENEVER WE WANT TO SELECT ANY HTML ELEMENT (<DIV>), SO WE USUALLY GO THROUGH GETELEMENTBYTAGNAME() WITHOUT SELECTING ITS ID OR A CLASSNAME. BUT IN SUCH CASE, WE CAN HAVE MORE THAN ONE SAME ELEMENTS (<DIV>) AND IF WE DO SO BOTH TAGS WILL BE SELECTED, NOT THAT ONE TAG WHAT WE WANT!
+
+    ==> SO IN ORDER TO SOLVE SUCH CONFLICT, WE TRAVERSE ELEMENT EITHER DIRECT OR INDIRECT TRAVSERSING TECHNIQUE.
+
+    ---
+
+     1. CHILD_OBJ_NAME.parentElement: FROM CHILD ELEMENT TO PARENT ELEMENT.
+
+     2. PARENT_OBJ_NAME.firstElementChild: FROM PARENT ELEMENT TO FIRST CHILD ELEMENT.
+
+     3. PARENT_OBJ_NAME.lastElementChild: FROM PARENT ELEMENT TO LAST CHILD ELEMENT.
+
+     4. PARENT_OBJ_NAME.children: FROM PARENT TO ITS ALL CHILDREN.
+
+     5. OBJ_NAME.nextElementSibling: FROM ONE ELEMENT TO ITS NEXT SIBLING ELEMENT.
+
+     6. OBJ_NAME.previousElementSibling: FROM ONE ELEMENT TO ITS PREVIOUS SIBLING ELEMENT.
+
+     ---
+
+     (USING ALL THESE, WE CAN TRAVERSE ANY ELEMENT INDIRECTLY)
+
+        1. FROM PARENT TO CHILD: FIRST CHILD ELEMENT - LAST CHILD ELEMENT - CHILDREN
+        2. FROM CHILD TO PARENT: PARENT ELEMENT
+        3. SIBLINGS TO SIBLINGS: NEXT SIBLING ELEMENT - PREVIOUS SIBLING ELEMENT
+
+     OVERALL: FIRST CHILD ELEMENT - LAST CHILD ELEMENT - CHILDREN - NEXT SIBLING ELEMENT - PREVIOUS SIBLING ELEMENT - PARENT ELEMENT
+
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traversing Elements</title>
+</head>
+<body>
+    <!-- HERE WE WANT TO SELECT FIRST DIV TAG USING ITS CHILD -->
+
+    <h1>Main Heading</h1>
+
+    <ul>
+        <li id="index">List 1</li>
+        <li>List 2</li>
+        <li>List 3</li>
+        <li>List 4</li>
+    </ul>
+
+    <ul class="intro">
+        <li>List A</li>
+        <li>List B</li>
+        <li id="demo">List C</li>
+        <li>List D</li>
+    </ul>
+
+    <ul id="dummy">
+        <li>Box Red</li>
+        <li>Box Green</li>
+        <li>Box Blue</li>
+    </ul>
+
+</body>
+    <script>
+
+        // SELECT PARENT THROUGH ITS CHILD.
+        let temp = document.getElementById("index");
+        console.log(temp); // LIST 1 WILL BE SELECTED: CHILD
+        console.log(temp.parentElement); // FIRST UL WILL BE SELECTED
+        console.log(temp.parentElement.innerHTML); // GET innerHTML
+        temp.parentElement.innerHTML = "<b> Hello </b>"; // SET innerHTML
+
+        // SELECT CHILD THROUGH ITS PARENT
+        let temp1 = document.getElementsByClassName("intro");
+        console.log(temp1); // WHOLE SECOND UL WILL BE SELECT
+        console.log(temp1.length); // 1: BECAUSE 1 ELEMENT
+        console.log(temp1.innerHTML);// UNDEFINED BECAUSE IT IS COLLECTION
+
+        console.log(temp1.firstElementChild); // UNDEFINED
+
+        for(let i=0; i<temp1.length;i++){
+            // FIRST CHILD OF PARENT
+            console.log(temp1[i].firstElementChild); // LIST A
+
+            // LAST CHILD OF PARENT
+            console.log(temp1[i].lastElementChild); // LIST D
+        }
+
+        // NEXT ELEMENT AND PREVIOUS ELEMENT SIBLING
+        let demo = document.getElementById("demo");
+        console.log(demo); // LIST C
+        console.log(demo.nextElementSibling); // LIST D
+        console.log(demo.previousElementSibling); // LIST B
+
+        // CAN GO UP TO ANY ELEMENT USING NEXT AND PREVIOUS
+
+        // PREVIOUS OF C:B - PREVIOUS OF B: A = LIST A
+        console.log(demo.previousElementSibling.previousElementSibling);
+
+        // NEXT OF C:D - PREVIOUS OF D:C - PREVIOUS OF C: B = LIST B
+        console.log(demo.nextElementSibling.previousElementSibling.previousElementSibling); 
+
+        // -------------------
+
+        // SELECT ALL CHILDREN FROM ITS PARENT:
+        let box = document.getElementById("dummy");
+        console.log(box); // 3rd UL WILL BE SELECTED
+
+        // EVERY CHILDREN OF UL TAG WILL BE SELECTED
+        console.log(box.children); // HTMLCollection(3)
+        console.log(box.children.length);// 3: CHILDREN
+        console.log(box.children.innerHTML); // UNDEFINED
+
+        // FOR LOOP FOR THE LENGTH
+        for(let i = 0; i < box.children.length; i++){
+            console.log(box.children[i]); // ALL 3 LI WILL BE SELECTD
+
+            // GET INNERHTML
+            console.log(box.children[i].innerHTML); // ALL 3 BOX COLOR WILL BE DISPLAYED
+
+            box.children[i].innerHTML = "Nehal"; // WHOLE 3RD UL WILL BE CHANGED 
+        }
+
+    </script>
+</html>

@@ -1,0 +1,45 @@
+<!-- 
+    CLONE ELEMENT = COPY ELEMENT (DYNAMICALLY)
+
+    SYNTAX: obj_name.cloneNode(true);
+
+    ==> OBJECT NAME WHICH YOU WANT TO COPY.
+    ==> (DEFAULT) FALSE: IT WILL ONLY COPY THE PARENT, NOT CHILD ELEMENTS. (ONLY COPY UL NOT LI)
+    ==> TRUE: COPY WHOLE ELEMENT: PARENT AND CHILDREN (COPY BOTH UL AND LI)
+
+ -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clone the element</title>
+</head>
+<body>
+    <ul id="menu">
+        <li>Home</li>
+        <li>Services</li>
+        <li>About us</li>
+        <li>Log out</li>
+    </ul>
+</body>
+    <script>
+        let temp = document.getElementById("menu");
+        
+        let replicaMenu = temp.cloneNode(true);
+
+        console.log(replicaMenu); // COPY OF FIRST UL
+
+        // APPEND AFTER FIRST UL IN THE BODY
+        document.body.appendChild(replicaMenu);
+
+        // ID WILL BE SAME FOR BOTH UL. (ORIGINAL AND COPY)
+        // WE WANT TO CHANGE THE ID OF COPIED UL.
+
+        replicaMenu.id = "mobile-menu";
+
+    </script>
+</html>

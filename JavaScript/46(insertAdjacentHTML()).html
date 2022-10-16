@@ -1,0 +1,61 @@
+<!-- 
+    DOM METHOD:
+
+    ONE OF THE POWERFUL METHOD OF DOM.
+    
+    ==> USING IT, WE CAN INSERT ANY ELEMENT AT ANY OF FOUR POSITIONS.
+        1. BEFOREBEGIN (BEFORE SELECTED ELEMENT)
+        2. AFTERBEGIN (AFTER SELECTED ELEMENT)
+        3. BEFOREEND (OF THE ELEMENT)
+        4. AFTEREND (OF THE ELEMENT)
+
+    ==> WE DO NOT NEED TO CREATE AN ELEMENT SAPERATELY.
+        EX: DOCUMENT.CREATEELEMENT();
+
+    ==> TEXT WILL BE PARSED TO HTML AUTOMATICALLY.
+
+    ==> parent_obj.insertAdjacentHTML(ARG1, ARG2);
+        ARG 1: 1 OUT OF 4 POSITIONS
+        ARG 2: HTML IN FORM OF TEXT. "<p> Hello </p>"
+
+ -->
+
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insert Adjecent HTML</title>
+ </head>
+ <body>
+        <!-- beforebegining -->
+    <div id="intro"> <!-- SELECTED-->
+        <!-- afterbegining -->
+
+        <h2>Heading</h2>
+        <p>This is dummy paragraph.</p>
+
+        <!-- before end -->
+    </div>
+        <!-- after end -->
+
+ </body>
+    <script>
+        let temp = document.getElementById("intro");
+
+        // IT WILL AUTOMATICALLY TAKE THIS TEXT AS A HTML.
+        let textHtml = "<span> To add this anywhere. </span>";
+        
+        
+        temp.insertAdjacentHTML("beforebegin", textHtml);
+        // <div> : STARTING OF THE DIV
+        temp.insertAdjacentHTML("afterbegin", textHtml);
+
+        
+        temp.insertAdjacentHTML("beforeend", textHtml);
+        // </div> : ENDING OF THE DIV
+        temp.insertAdjacentHTML("afterend", textHtml);
+
+    </script>
+ </html>

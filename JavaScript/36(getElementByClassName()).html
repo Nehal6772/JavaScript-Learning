@@ -1,0 +1,62 @@
+
+<!--
+     DOM METHOD:
+
+     2. getElementsByClassName(" CLASS_NAME "); 
+
+    --: GET ANY HTML ELEMENT (OBJECT) THROUGH ITS ASSIGNED CLASS NAME.
+    --: CLASS NAME IS USED WHEN WE WANT TO SELECT/GET 'MULTIPLE ELEMENTS' AT A TIME.
+    --: (OBJECT) HTMLCollection: MULTIPLE ELEMENT (COLLECTION OF    DOCUMENT OBJECTS).
+
+    --: COLLECTION: ARRAY OF AN OBJECT.
+    --: HTMLCollection: ARRAY OF HTML ELEMENTS (OBJECTS).
+
+    --: TO APPLY innerHTML ON HTMLCollection, WE NEED TO USE 'FOR LOOP' FOR ARRAY LENGHT.
+
+ -->
+
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>getElementByClassName()</title>
+ </head>
+ <body>
+
+    <h2 class="same">Heading 1</h2>
+        <p>Paragraph 1</p>
+    <h2>Heading 2</h2>
+        <p>Paragraph 2</p>
+    <h2 class="same">Heading 3</h2>
+        <p>Paragraph 3</p>
+
+
+ </body>
+    <script>
+        let temp = document.getElementsByClassName("same");
+        
+        //HTMLCollection: ARRAY OF HTML ELEMENTS
+        console.log(temp); // HEADING 1 & 3 WILL BE SELECTED
+        console.log(temp.length); // 2: ARRAY
+        console.log(typeof temp); // OBJECT
+
+        // WE CANNOT 'GET' THE HTML CONTENT OF AN ARRAY DIRECTLY
+        console.log(temp.innerHTML); // UNDEFINED BECAUSE IT IS ARRAY
+
+        // WE CANNOT 'SET' THE HTML CONTENT OF AN ARRAY DIRECTLY
+        temp.innerHTML = "Headings have been updated";// NO ERROR
+
+        // IN ORDER TO GET AND SET THE HTML CONTENTS WE NEED FOR LOOP:
+        for(let i = 0; i < temp.length; i++){
+        
+            // GET innerHTML
+            console.log(temp[i].innerHTML); 
+            
+            // SET innerHTML
+            temp[i].innerHTML = "Both headings have been changed.";
+        }
+
+    </script>
+ </html>

@@ -1,0 +1,63 @@
+<!-- 
+    ==> BY DEFAULT BROWSER APPLIES SO MANY CSS TO THE HTML ELEMENT.
+
+    SYNTAX: getComputedStyle(obj_name);
+
+    ==> IT WILL COMPUTED ALL THE CSS WHICH IS APPLIED ON THE HTML ELEMENT.
+    ==> COMPUTED CSS : (INTERNAL APPLIED CSS + DEFAULT CSS).
+
+    ==> COLOR CODE: RGB (RED, GREEN, BLUE)
+        FROM BLACK TO WHITE: 
+        
+        BLACK: RGB(0,0,0) : RED=0, GREEN=0, BLUE=0
+
+        WHITE: RBG(255,255,255) : RED=255, GREEN=255, BLUE=255
+
+    ==> PRIORITY OF INLINE CSS IS HIGH. SO IF WE APPLY INLINE CSS ALONG WITH THE INTERNAL CSS THEN THE INLINE STYLE WILL OVERRIGHT (REPLACE) THE INTERNAL CSS.
+
+ -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>getComputedStyle() Method</title>
+
+    <!-- INTERNAL STYLE -->
+    <style>
+        #btn{
+            background-color:red;
+            color: white;
+            border: 3px solid blue;
+        }
+    </style>
+</head>
+<body>
+    <!-- INLINE CSS REPLACE INTERNAL CSS -->
+    <button id="btn" style="background-color: black;">Submit</button>
+</body>
+
+    <script>
+
+        let temp = document.getElementById("btn");
+
+        // IT WILL RETURN ALL COMPUTED CSS
+        let computedCss = getComputedStyle(temp);
+
+        // (INTERNAL APPLIED CSS + DEFAULT CSS).
+        console.log(computedCss); 
+
+        // RGB(255,255,255): WHITE: INTERNAL CSS
+        console.log(computedCss.color); 
+
+        // INTERNAL CSS
+        console.log(computedCss.border); 
+
+        // RGB (0,0,0): BLACK - INTERNAL CSS
+        console.log(computedCss.backgroundColor); 
+        
+    </script>
+</html>

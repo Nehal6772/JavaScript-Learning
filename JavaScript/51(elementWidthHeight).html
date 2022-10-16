@@ -1,0 +1,52 @@
+<!-- 
+    WE CAN GET TO KNOW THE HEIGHT AND WIDTH OF THE PAERTICULAR ELEMENT THROUGH JAVASCRIPT.
+
+    => THERE ARE 4 PROPERTIES OF HEIGHT AND WIDTH: (OFFSET AND CLIENT)
+        
+        --: OFFSET: INCLUDES BORDER, PADDING AND MARGIN.
+
+            1) offsetHeight
+            2) offsetWidth 
+
+        --: CLIENT: INCLUDES ONLY PADDING. NOT BORDER AND MARGIN. 
+
+            3) clientHeight
+            4) clientWidth
+
+    => PADDING IS COMMON IN BOTH OFFSET AND CLIENT.
+    
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Height and Width of Element</title>
+</head>
+<body>
+    
+    <div id="intro">
+        
+    </div>
+
+
+</body>
+    <script>
+        let temp = document.getElementById("intro");
+
+        temp.style.cssText = "background: yellow; height: 10px; width: 70px; border: 10px solid green; padding: 10px; margin: 10px";
+
+        // BORDER WILL COUNT TWICE IN OFFSET. BORDER * 2 (BECAUSE ALL 4 SIDES)
+
+        console.log("Offset height= " + temp.offsetHeight); // 50
+        console.log("Offset width= " + temp.offsetWidth); // 110
+
+        // PADDING WILL COUNT TWICE IN CLIENT. PADDING * 2
+
+        console.log("client height= " + temp.clientHeight); // 30
+        console.log("client width= " + temp.clientWidth); // 90
+ 
+    </script>
+</html>

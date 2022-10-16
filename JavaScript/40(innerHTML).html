@@ -1,0 +1,45 @@
+<!-- 
+    1. innerHTML IS DOM PROPERTY AND WIDELY USE TO ACCESS THE CONTENT OF HTML ELEMENT. (THE CONTENT WHICH IS WRITTEN IN ENGLISH INSIDE THE HTML TAG)
+
+    2. WE CANN GET AND SET THE CONTENT USING innerHTML.
+
+    SYNTAX OF GET: console.log(obj_name.innerHTML) ;
+
+    SYNTAX OF SET: obj_name.innerHTML = "Content you want to replace";
+
+    3. innerHTML WILL NOT APPLY ON HTMLCollection BECAUSE IT HAS MORE THAN ONE ELEMENT.
+
+    ==> innerHTML WILL DIRECTLY 'REPLACE' THE HTML CONTENT USING SET.
+ -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>innerHTML</title>
+</head>
+<body>
+    <div id="loremText">
+
+        <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente, odit. Sed, minima cumque enim rerum vitae quos voluptatibus totam molestiae nostrum, officiis repellat nobis explicabo inventore. Natus, eaque est iusto architecto illum, totam tempora doloribus earum rem, corrupti at necessitatibus doloremque eos iste quidem quaerat possimus quasi iure id accusantium. </p>
+        
+    </div>
+
+</body>
+    <script>
+
+        let temp = document.getElementById("loremText");
+        console.log(temp); // <P> TAG WILL BE SELECTED: OBJECT
+
+        // GET innerHTML
+        console.log(temp.innerHTML);
+
+        // SET innerHTML
+        temp.innerHTML = "<b> Whole Paragraph has changed inside div. </b>";
+
+
+    </script>
+</html>

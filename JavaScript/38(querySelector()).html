@@ -1,0 +1,92 @@
+<!-- 
+     DOM METHOD: "THE MOST POWERFUL SELECTOR OF DOM".
+
+     ==> THIS IS MIXTURE OF ALL DOM METHODS AS WE CAN PERFORM MULTIPLE TASKS USING IT:
+     ==> WE CAN SELECT ID, CLASS NAME, AND TAG NAME AT THE SAME TIME THAT IS WHY THIS IS THE MOST POWERFUL SELECTOR.
+        
+    --: querySelector("") WILL SELECT THE SINGLE ELEMENT ONLY.
+
+        --: querySelector("TAG_NAME#ID_NAME"); // ID (.)
+        --: querySelector("TAG_NAME.ID_NAME"); // CLASS (#)
+    
+    --: querySelectorAll("") WILL SELECT MULTIPLE ELEMENTS.
+
+    ==> NodeList: COLLECTION OF MORE THAN ONE OBJECTS OR ELEMENTS.
+ 
+        --: querySelectorAll("TAG_NAME#ID_NAME"); // ID (.)
+        --: querySelectorAll("TAG_NAME.ID_NAME"); // CLASS (#)
+ 
+
+     ==> QUERYSELECTOR(): RETURN FIRST ELEMENT WHERE CONDITION SATISFY
+        
+     ==> QUERYSELECTORALL(): RETURN MULTIPLE ELEMENTS WHERE CONDITION SATISFY
+
+
+
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>querySelector()</title>
+</head>
+<body>
+
+    <h1 >Main heading</h1>
+        <p class="one">Main Paragraph</p>
+
+    <div id="index">
+        <h1 class="one">Heading 1</h1>
+
+            <p id="two">Paragraph 1</p>
+
+        <h1 id="two">Heading 2</h1>
+
+            <p class="one">Paragraph 2</p>
+
+        <h1 class="one">Heading 3</h1>
+
+            <p>Paragraph 3</p>
+    </div>
+
+</body>
+    <script>
+
+        // HEADING 1
+        let temp = document.querySelector("h1.one"); // SINGLE
+        console.log(temp); // SELECT 'FIRST' h1 WHOSE CLASS NAME IS ONE
+
+        // NODELIST(2): HEADING 1, HEADING 3
+        let temp1 = document.querySelectorAll("h1.one"); // MULTIPLE
+        console.log(temp1);// SELECT ALL 'h1' WHOSE CLASS NANE IS ONE
+
+        // NODELIST(4): MAIN PARAGRAPH, HEADING 1, PARAGRAPH 2, HEADING 3
+        let temp2 = document.querySelectorAll(".one") // MULTIPLE
+        console.log(temp2); // SELECT ALL ELEMENTS WHOSE CLASS IS ONE
+
+        // PARAGRAPH 1
+        let temp3 = document.querySelector("#two"); // SINGLE
+        console.log(temp3); // SELECT FIRST ELEMENT WHOSE ID IS TWO
+
+        // NODELIST(2): PARAGRAPH 2, HEADING 2
+        let temp4 = document.querySelectorAll("#two"); // MULTIPLE
+        console.log(temp4); // SELECT ALL ELEMENTS WHOSE ID IS TWO
+
+        console.log(temp.innerHTML); // HEADING 1
+        
+        
+        // FOR LOOP FOR THE COLLECTION: ARRAY
+        // NODELIST IS A COLLECTION: ARRAY OF AN HTML NODES
+        for(let i=0; i < temp2.length; i++){
+            // GET innerHTML: NODELIST(4)
+            console.log(temp2[i].innerHTML);
+
+            // SET innerHTML
+            temp2[i].innerHTML = "Changed node";
+        }
+
+    </script>
+</html>

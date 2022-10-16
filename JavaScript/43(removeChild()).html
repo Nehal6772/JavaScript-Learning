@@ -1,0 +1,50 @@
+<!-- 
+    
+    ==> REACH TO ELEMENT USING TRAVERSING PROPERTY AND REMOVE IT USING PARENT ELEMENT
+
+    SYNTAX: PARENT_OBJ_NAME.removeChild(Obj_name of element to delete);
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remove child element</title>
+</head>
+<body>
+    <h2>Main Heading</h2>
+    <!--  -->
+    <ul id="intro">
+        <li>List 1</li>
+        <li>List 2</li>  <!-- Remove this  -->
+        <li>List 3</li>
+        <li>List 4</li>
+    </ul>
+
+    <ul id="index">
+        <li>List 1</li>
+        <li>List 2</li>  <!-- Remove this  -->
+        <li>List 3</li>
+        <li>List 4</li>
+    </ul>
+
+</body>
+    <script>
+        let temp = document.getElementById("intro");
+        console.log(parent); // UL
+
+        let child2 = temp.firstElementChild.nextElementSibling;
+        console.log(child2); // List 2 WILL BE SELECTED
+
+        temp.removeChild(child2); // LIST 2 WILL BE DELETED
+        
+        // NOW I WANT TO REMOVE WHOLE SECOND UL FROM THE BODY.
+        let temp1 = document.getElementById("index");
+        let body = document.body;
+        
+        body.removeChild(temp1); // SECOND UL WILL BE DELETED FROM BODY
+
+    </script>
+</html>

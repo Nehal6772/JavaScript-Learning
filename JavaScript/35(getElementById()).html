@@ -1,0 +1,44 @@
+
+<!--   
+    :DOM METHOD:
+
+    1. getElementById(" ID_NAME "); 
+
+    --: GET ANY HTML ELEMENT (OBJECT) THROUGH ITS 'ID'. 
+    --: ID IS USED WHEN WE WANT TO GET/SELECT 'SINGLE ELEMENT' AT A TIME. 
+    --: (OBJECT) HTMLElement: ONE ELEMENT.
+
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GetElementById()</title>
+</head>
+<body>
+    <h1>
+        <ul>
+            <li id="one">List 1</li>
+            <li id="two">List 2</li>
+            <li id="three">List 3</li>
+        </ul>
+    </h1>
+
+</body>
+    <script>
+        let temp = document.getElementById("two");
+
+        console.log(temp); // LIST 2 WILL BE SELECTED
+        console.log(typeof temp); // OBJECT
+
+        // GET HTML CONTENT (TEXT) THROUGH innerHTML
+        console.log(temp.innerHTML); // LIST 2
+
+        // SET HTML CONTENT (TEXT) THROUGH innerHTML
+        temp.innerHTML = "<p> This list has been updated. <p>";
+
+    </script>
+</html>

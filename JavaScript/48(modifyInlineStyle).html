@@ -1,0 +1,66 @@
+<!-- 
+    CHANGE INLINE CSS THROUGH JAVASCRIPT. (DOM PROPERTY)
+
+    ==> WE CAN SET THE INLINE CSS THROUGH 3 WAYS:
+
+        1) USING METHOD: obj_name.setAttribute("style", "CSS 1; CSS 2; ... ");
+            => IT WILL REPLACE ALREADY APPLIED CSS INSIDE THE ELEMENT.
+            => WE CAN GIVE MORE THAN ONE CSS AT A TIME IN THE PARAMETER.
+            => IT WON'T MERGER REMAINING PROPERTY. IT WILL REPLACE EVERYTHING.
+
+        2) USING PROPERTY: obj_name.style.cssText = "CSS 1; CSS 2; ... ";
+            => IT WILL REPLACE ALREADY APPLIED CSS INSIDE THE ELEMENT.
+            => WHEN IF WE WANT TO MERGE NEW CSS WITH THE APPLIED INLINE CSS THEN USE (+=)
+                EX: obj_name.style.cssText += "CSS 1; CSS 2; ... "
+                   --: IT WILL GET ALREADY APPLIED CSS AND THEN MERGER NEW CSS IT TO.
+            => WE CAN GIVE MORE THAN ONE CSS AT A TIME IN THE PARAMETER.
+            => IT WON'T MERGER REMAINING PROPERTY. IT WILL REPLACE EVERYTHING.
+
+        3) USING PROPERTY: CHANGE SINGLE CSS: obj_name.style.css = "css value";
+            => IT WILL REPLACE ONLY IF BOTH CSS ARE SAME OTHERWISE IT WILL MERGE EXTERNALLRY APPLIED NEW CSS WITH ALREADY APPLIED OLD CSS.
+
+ -->
+
+
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inline CSS through JS</title>
+ </head>
+ <body>
+    
+    <button id="btn" style="background-color: blue;">Submit</button>
+
+ </body>
+    <script>
+
+        let temp = document.getElementById("btn");
+
+        // BACKGROUND COLOR : BLUE WILL BE REPLACED WITH THESE NEW STYLE USING 3 WAYS.
+
+
+        // 1ST WAY TO ADD INLINE CSS (USING SETATTRIBUTE METHOD)
+        temp.setAttribute("style", "color: white; background-color: black; border-radius: 50px");
+        // temp.setAttribute("style", "border-radius: 50px"); // REMOVE BACKGROUNDCOLOR: BLUE
+
+
+
+
+        // 2ND WAY TO ADD INLINE CSS 
+        temp.style.cssText = "color: white; background-color: black; border-radius: 50px";
+        // temp.style.cssText = "border-radius: 50px"; // REMOVE BACKGROUNDCOLOR: BLUE
+
+
+
+
+        // 3RD WAY TO ADD SINLE INLINE CSS
+        temp.style.color = "white";
+        temp.style.backgroundColor = "black";
+        temp.style.borderRadius = "50px"; // ADD WITH BACKGROUNDCOLOR: BLUE
+        temp.style.border = "5px solid grey"; // MERGE THIS IN OVERALL CSS
+
+    </script>
+ </html>

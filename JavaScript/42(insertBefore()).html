@@ -1,0 +1,75 @@
+<!-- DOM METHOD: EXTENTION OF APPENDCHILD() METHOD
+
+    ==> appendChild() APPENDS THE NEW ELEMENT AT THE LAST OR AT THE END POSITION.
+
+    ==> WE insertBefore() IS USED TO ADD NEW ELEMENT AT ANY POSITION ISDE THE HTML TAG
+
+    ==> parent_obj_name.insertBefore(arg 1, arg 2); (INSERT ARG1 BEFORE ARG2.)
+        ARG 1: WHAT (NEW ELEMENT)
+        ARG2: WHERE (POSITION) : POSITION OF ELEMENT WILL BE SELECTED USING TRAVERSING BEFORE WHICH WE WANT TO ADD NEW ELEMENT.
+ -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>insertBefore</title>
+</head>
+<body>
+    <ul id="intro">
+
+        <!-- 1 -->
+        <li>List 1</li>
+        <!-- 2 -->
+        <li>List 2</li>
+        <!-- 3 -->
+        <li>List 3</li>
+        <!-- 4 -->
+        <li>List 4</li>
+        <!-- 5 : APPENDCHILD ALWAYS ADDS AT THE END -->
+
+        <!-- WE CAN ADD ELEMENT AT 1,2,3,4 POSITION USING INSERTBEFORE() -->
+    </ul>
+    
+</body>
+    <script>
+        // SELECT PARENT ELEMENT: UL
+        let temp = document.getElementById("intro");
+
+        // CREATE NEW ELEMENT
+        let newLi = document.createElement("li");
+        newLi.textContent = "This is insert before";
+
+        // SELECT THE FIRST CHILD OF THE PARENT: LIST 1
+        let oneLi = temp.firstElementChild;
+        console.log(oneLi); // LIST 1
+
+        // INSERT BEFORE LIST 1
+        temp.insertBefore(newLi, oneLi); // POSITION 1
+
+
+        // WE WANT TO INSER AT POSITION 3
+        let threePos = temp.lastElementChild.previousElementSibling;
+        console.log(threePos.innerHTML); // LIST 3
+
+        let tempLi = document.createElement("li");
+        tempLi.textContent = "Added before list 3";
+
+        temp.insertBefore(tempLi, threePos);
+
+
+        // WE WANT TO ADD PARAGRAPH TAG BEFORE UL AND INSIDE BODY.
+        let newPara = document.createElement("p");
+        newPara.textContent = "This paragraph created to perform insert before in body.";
+
+        let intro = document.getElementById("intro");
+
+        let parent = document.body;
+        
+        parent.insertBefore(newPara, intro); // INSERT NEWPARA BEFORE INTRO.
+
+    </script>
+</html>

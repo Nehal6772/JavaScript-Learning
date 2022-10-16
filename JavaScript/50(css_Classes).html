@@ -1,0 +1,137 @@
+<!-- 
+    CSS CLASS MODIFICATIONS THROUGH JAVASCRIPT.
+
+    => THERE ARE TWO WAYS THROUGH WHICH WE CAN GET TO KNOW THE CLASSES WHICH IS APPLIED ON THE ELEMENT.
+        1) obj_name.className: property : IT RETURNS THE NAME OF THE CLASS WHICH IS APPLIED.
+
+        2) obj_name.classList: property : IT RETUENS THE ARRAY OF THE CLASS WHICH IS APPLIED. (ARRAY: DOMTokenList)
+          => classList property has 5 methods:
+                1) classList.add("class name");
+                2) classList.remove("class name");
+                3) classList.replace("old class name", "new class name");
+                4) classList.contains("class name"): RETURN: BOOLEAN
+                5) classList.toggle("class name"): REVERSE LIKE ELECTRIC DUAL FAN SWITCH
+
+    => WE CAN SET AND GET THE CLASS NAME THROUGH THE SAME PROPERTY: className
+        SET: obj_name.className = "name of the class";
+        GET: console.log(obj_name.className);
+
+     => WE CAN SET THE CLASS EXTERNALLY IN ELEMENT USING 2 WAYS:
+
+        1) obj_name.className = "class_name"; // USING ONLY PROPERTY
+
+        2) obj_name.classList.add("class_name"); // USING METHOD OF PROPERTY (add() method)
+
+     => remove(): WE CAN REMOVE THE CLASS FROM THE ELEMENT EXTERNALLY. 
+
+        --: obj_name.classList.remove("class_name"); // USING METHOD OF PROPERTY 
+
+    =>  replace(): WE CAN REPLACE THE CLASS FROM THE NEW CLASS EXTERNALLY.
+
+        --: temp.classList.replace("old class name", "new class name");
+
+    => contains(): WE CAN KNOW WHETHER THE CLASS HAS APPLIED ON ELEMENT OR NOT.
+
+        --: temp.classList.contains("class name");
+
+    => toggle(): WE CAN TOGGLE THE CLASS: IT MEANS IF CLASS IS APPLIED THEN IT WILL REMOVE IT AND IF CLASS IS NOT APPLIED THEN IT WILL APPLY THE CLASS IN AN ELEMENT.
+
+        --: temp.classList.toggle("class name");
+
+
+ -->
+
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Classes</title>
+
+    <!-- INTERNAL CSS -->
+    <style>
+        .color{
+            background-color: cadetblue;
+            color: black;
+        }   
+        
+        .dimen{
+            text-align: center;
+            border: 3px solid red;
+            padding: 30px;
+        }
+        .margin{
+            margin-top: 100px;
+        }
+
+        .rep{
+            background-color: yellowgreen;
+            color: black;
+        }
+
+        .dummy{
+            margin: 100px;
+        }
+
+    </style>
+
+ </head>
+ <body>
+    
+    <div id="intro" class="color">
+        <h2>This is dummy text.</h2>
+    </div>
+
+ </body>
+    <script>
+        let temp = document.getElementById("intro");
+
+        // IT WILL FIRST GET THE CLASS WHICH IS APPLIED INLINE AND THEN MERGE IT WITH THIS NEW EXTERNALLY APPLIED CLASS. (+=); 
+        // ONE SPACE BEFORE THIS CLASS NAME IS MUST OTHERWISE IT WILL NOT APPLY.
+        // 1ST WAY TO PROVIDE CLASS TO ELEMENT
+        temp.className += " dimen"; // MERGE THIS CLASS WITH ALREADY APPLIED OLD CLASS
+
+        console.log(temp.className); // color dimen : RETUEN APPLIED CLASSES
+
+        // ARRAY: DOMTokenList(2) ['color', 'dimen', value: 'color dimen']
+        console.log(temp.classList); // TO ACCESS: YOU'LL NEED FOR LOOP
+        console.log(temp.classList.length); // 2
+
+        // GET THE CLASS NAME FROM THIS CLASS LIST USING ARRAY LENGTH.
+        for(let i = 0; i < temp.classList.length; i++)
+        {
+            console.log(temp.classList[i]); // color dimen
+        }
+
+        // OR : SAME AS ABOVE FOR LOOP
+        for(let css of temp.classList){
+            console.log("This is CSS: " + css); // color dimen
+        }
+
+        // ADD NEW CLASS TO ELEMENT USING CLASSLIST. (ADD() METHOD)
+        // 2ND WAY TO PROVIDE CLASS TO ELEMENT
+        temp.classList.add("margin"); // class = "margin" WILL BE MERGED
+
+        // color dimen align
+        console.log(temp.classList); // DOMTokenList (3)
+
+
+        // REMOVE EXISTING CLASS FROM ELEMENT USING CLASSLIST. (REMOVE() METHOD)
+        temp.classList.remove("margin"); // class = "margin" WILL BE REMOVED
+
+
+        // REPLACE EXISTING CLASS TO NEW CLASS USING CLASSLIST. (REPLACE() METHOD)
+        temp.classList.replace("color", "rep"); // REPLACE COLOR WITH REP
+
+
+        // CHECK WHETHER THE CLASS IS APPLIED ON ELEMENT OR NOT
+        console.log(temp.classList.contains('rep')); // TRUE
+        console.log(temp.classList.contains('color')); // FLASE
+
+
+        // TOGGLE THE CLASS IN AN ELEMENT
+        temp.classList.toggle("dummy"); // CLASS = "DUMMY" IS NOT APPLIED BEFORE SO IT WILL APPLY DUMMY CLASS INTO AN ELENENT.
+
+    </script>
+ </html>

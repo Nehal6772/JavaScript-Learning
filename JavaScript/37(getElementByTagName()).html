@@ -1,0 +1,92 @@
+<!-- 
+    DOM METHOD: (SAME AS GET BY CLASS NAME)
+
+    3. getElementsByTagName(" TAG_NAME "); 
+
+    --: GET ANY HTML ELEMENT (OBJECT) THROUGH ITS HTML TAG NAME.
+    --: IT WILL CHANGE THE CONTENT OF ALL H1 TAGS INSIDE THE HTML PAGE.
+    --: TAG NAME IS USED WHEN WE WANT TO SELECT/GET 'MULTIPLE ELEMENTS' AT A TIME.
+    --: (OBJECT) HTMLCollection: MULTIPLE ELEMENT (COLLECTION OF DOCUMENT OBJECTS)
+    --: TO APPLY innerHTML ON HTMLCollection, WE NEED TO USE 'FOR LOOP' FOR ARRAY LENGHT.
+
+    --: THROUGH THIS METHOD, WE CAN SELECT THE ELEMENT OF PARTICULAR DIVISION OR A PORTION INSTEAD OF WHOLE HTML DOCUMENT OR A PAGE. 
+    --: (NOT EVERY TIME WE WILL SELECT THE ELEMENT FROM WHOLE DOCUMENTS.)
+    --: THEN CLASS NAME OF THAT PARTICULAR DIV OR A PORTION WILL NOT WORK. WE CAN PERFROM ONLY THROUGH THE 'ID'.
+
+ -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GetElementByTagName()</title>
+</head>
+<body>
+    <h1>This is main heading</h1>
+
+    <div id="intro">
+        <h1>Sub heading 1</h1>
+            <p>This is Paragraph No.1</p>
+        <h1>Sub heading 2</h1>
+            <p>This is Paragraph No.2</p>
+        <h1>Sub heading 3</h1>
+            <p>This is Paragraph No.3</p>
+    </div>
+
+</body>
+    <script>
+
+        // IT WILL GET ALL H1 TAGS FROM THE WHOLE DOCUMENT
+        let temp = document.getElementsByTagName("h1");
+        console.log(temp); // HTMLCollection: ALL H1 WILL BE SELECTED
+        console.log(typeof temp); // OBJECT
+        console.log(temp.length); // 4
+
+        // CANNOT GET THE HTML CONTENT OF AN ARRAY
+        console.log(temp.innerHTML); // UNDEFINED BECAUSE IT IS ARRAY
+
+        // CANNOT GET THE HTML CONTENT OF AN ARRAY
+        temp.innerHTML = "All h1 have been updated"; // NO ERROR
+
+        // IN ORDER TO SET AND GET THE HTML CONTENT OF ALL H1 TAGS, WE NEED FOR LOOP:
+        for(let i = 0; i< temp.length; i++){
+
+            // GET HTML CONTENT OF H1 TAG ONE BY ONE
+            console.log(temp[i].innerHTML);
+
+            // SET HTML CONTENT OF H1 TAG ONE BY ONE
+            temp[i].innerHTML = "This has been changed for first time";
+        }
+
+        // NOW WE HAVE A SCENARIO, IN WHICH WE ONLY HAVE TO CHANGE ALL H1 TAGS WHICH ARE IN DIV ONLY. (REMIANING H1 TAGS OUTSIDE THIS DIV WILL REMAIN UNCHANGED.)
+            // IT WILL NOT WORK IF WE GAVE 'CLASS' TO THAT DIV.
+            // IT WILL DEFINATELY WORK IF WE GIVE 'ID' TO THE DIV.
+
+        // SELECT DIV FROM WHOLE DOCUMENTS WHOSE ID IS 'INTRO'.
+        let myDiv = document.getElementById("intro");
+        console.log(myDiv); // SINGLE DIV WILL BE SELECTED.
+        console.log(myDiv.length); // UNDEFINED BECAUSE IT NOT AN ARRAY
+
+        
+        // SELECT <h1> ELEMENT FROM ONLY myDiv, NOT WHOLE DOCUMENT.
+        let temp1 = myDiv.getElementsByTagName("h1");
+        
+        //HTMLCollection
+        console.log(temp1); // ALL THREE H1 FROM DIV WILL BE SELECTED
+        console.log(temp1.length); // 3: ARRAY HAS 3 ELEMENTS
+
+        for(let i = 0; i < temp1.length; i++){
+            
+            // GET HTML CONTENT 
+            console.log(temp1[i].innerHTML);
+
+            // SET HTML CONTENT INSIDE THE DIV ONLY
+            temp1[i].innerHTML = "Changed for the second time.";
+
+        }
+
+    </script>
+</html>

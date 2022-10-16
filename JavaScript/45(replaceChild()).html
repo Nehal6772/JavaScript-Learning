@@ -1,0 +1,46 @@
+<!-- 
+     ==> parent.replaceChild(): PERFORMS TWO TASKS AT THE SAME TIME.
+        1. CREATE NEW ELEMENT
+        2. REPLACE NEW ELEMENT WITH EXISTING OLD ELEMENT.
+
+     ==> WE CAN PERFORM THIS OPERATION INDIVIDUALLY BUT WE DO NOT NEED  IT BECAUSE WE HAVE replaceChild() method.
+
+     ==> WE NEED TO SELECT THE EXISTING ELEMENT THROUGH ELEMENT TRAVERSING AND REPLACE IT WITH NEWLY CREATED ELEMENT.
+
+     ==> SYNTAX: parent.replaceChild(ARG1, ARG2);
+        ARG 1: WHAT TO REPLACE (NEW ELEMENT)
+        ARG 2: WHERE TO REPLACE (EXISTING ELEMENT)
+
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Replace Child Element</title>
+</head>
+<body>
+    <ul id="menu">
+        <li>Home</li>
+        <li>Contact</li> <!-- REPLACE IT WITH SERVICES -->
+        <li>About</li>
+    </ul>
+    
+</body>
+    <script>
+        // UL GET SELECTED
+        let temp = document.getElementById("menu");
+
+        // LIST CONTACT GET SELECTED
+        let contact = temp.firstElementChild.nextElementSibling;
+
+        // NEW LIST : REPLACED SERVICES CREATED
+        let newLi = document.createElement("li");
+        newLi.textContent = "Replaced Services";
+
+        temp.replaceChild(newLi, contact);
+
+    </script>
+</html>
