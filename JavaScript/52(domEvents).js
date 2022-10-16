@@ -38,4 +38,10 @@ ARG2: function can be normal or anonymous function.
     });
 
 
+===> DOM EVENT METHODS
+
+1) obj_name.addEventListener("event name", function);
+
+2) obj_name.removeEventListener("event name", function);
+
 */
