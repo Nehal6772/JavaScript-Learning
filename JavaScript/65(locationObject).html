@@ -1,0 +1,96 @@
+<!-- 
+    ==> LOCATION IS THE SUB OBJECT OF WINDOW OBJECT.
+
+    => USAGE OF LOCATION OBJECT:
+
+        1) LOCATION OBJECT IS USED TO GET THE ADDRESS (URL) OF CURRENT PAGE.
+
+        2) IT IS ALSO USED TO REDIRECT THE BROWSER FROM ONE URL TO ANOTHER URL.
+
+    ==> IF WE USE LOCATION OBJECT, WE DO NOT NEED TO DEFINE IT USING WINDOW OBJECT BECAUSE WINDOW OBJECT IS DEFAULT.
+
+        EX: window.location.href // NO NEED TO DEFINE LOCATION USING WINDOW OBJECT.
+        => location.href // THIS IS VALID WITHOUT WINDOW OBJECT.
+
+    ==> LOCATION OBJECT HAS FEW PROPERTIES AND FEW METHODS:
+
+    ==> REDIRECT CURRENT WEB PAGE TO GIVEN URL: WE HAVE 4 WAYS. 
+
+        1) window.location: (property)
+            => window.location = "https://www.google.com"; 
+
+        2) location.href: (property)
+            => location.href = "https://www.google.com"; 
+
+        3) location.assign("URL"): (method)
+            => location.assign("https://www.google.com"); // (BACK BUTTON ENABLE)
+
+        4) location.replace("URL"); (method)    
+            => location.replace("https://www.google.com"); // (BACK BUTTON DISABLE)
+
+        ==> ALL THESE REDIRECTS WILL BE STORED IN THE BROWSER HISTORY.
+
+    -------------------------------------------------
+
+    ==> METHOD OF LOCATION OBJECT.
+
+        1) location.assign("URL"); 
+            => REDIRECT TO GIVEN URL 
+            => CURRENT PAGE WILL BE STORED IN SESSION HISTORY (THAT'S WHY BACK BUTTON WILL BE THERE)
+            => USER HAVE BACK BUTTON TO GO TO PREVIOUS PAGE ONCE IT IS DIRECTED TO GIVEN URL
+            => STORED IN BROWSER HISTORY
+
+        2) location.replace("URL");
+            => SAME AS ASSIGN() : REDIRECT TO GIVEN URL
+            => CURRENT PAGE WILL NOT BE STORED IN SESSION HISTORY (THAT'S WHY NO BACK BUTTON WILL BE THERE)
+            => USER WILL NOT HAVE BACK BUTTON TO GO TO PREVIOUS PAGE ONCE IT IS DIRECTED TO GIVEN URL
+            => STORED IN BROWSER HISTORY
+
+        3) location.reload(); 
+            => RELOAD THE PAGE
+            => SAME AS REFRESH BUTTON
+            
+
+ -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>location Object</title>
+</head>
+<body>
+    <h1> window.location </h1> <b>OR</b> <h1>location</h1>
+
+    <button id="btn" onclick="redirect()">Click to Redirect</button>
+
+</body>
+    <script>
+
+        // PROPERTIES OF LOCATION OBJECT.
+        // WE CAN SKIP TO WRITE WINDOW OBJECT HERE
+        console.log(window.location.href); // http://127.0.0.1:5500/JavaScript/file_name.html
+        console.log(location.pathname); // JavaScript/file_name.html
+        console.log(window.location.protocol); // http:
+        console.log(window.location.port); // 5500
+        console.log(window.location.host); // 127.0.0.1:5500
+        console.log(window.location.hostname); // 127.0.0.1
+        console.log(window.location.origin); // http://127.0.0.1:5500 
+
+
+        // METHODS OF LOCATION OBJECT.
+        function redirect(){
+            // window.location = "https://www.google.com"; // 1st WAY TO REDIRECT
+            // location.href = "https://www.google.com"; // 2nd WAY TO REDIRECT
+       
+            // location.assign("https://www.google.com"); // 3rd WAY TO REDIRECT
+            // location.replace("https://www.facebook.com"); // 4th WAY TO REDIRECT
+
+            location.reload(); // SAME AS REFRESH BUTTON
+        }
+
+    </script>
+</html>

@@ -1,0 +1,90 @@
+<!-- 
+    BOM: BROWSER OBJECT MODEL.
+
+    ==> BOM IS USED TO INTERACT WITH THE BROWSER THROUGH JAVASCRIPT.
+
+    ==> MAIN OBJECT OF BOM IS : WINDOW OBJECT
+
+    ==> WINDOW OBJECT REPRESENTS THE WINDOW IN BROWSER. 
+
+    ==> WINDOW OBJECT (OF ANY WEBSITE) IS CREATED BY BROWSER AUTOMATICALLY.
+
+    ==> WINDOW IS DEFAULT OBJECT OF BROWSER, WE DO NOT NEED TO WRITE IT WHILE USING PROPERTY AND A METHOD.
+
+    -------------------------------------------------------------------
+
+    ==> ALL "GLOBAL" JAVASCRIPT'S 
+            1. OBJECTS, 
+            2. FUNCTIONS,
+            3. VARIABLES WITH VAR KEYWORD ONLY (NOT LET AND CONST)
+            4. DEFAULT METHODS (ALERT, CONFIRM, PROMT)
+        AUTOMATICALLY BECOME THE MEMBER OF THE WINDOW OBJECT.
+
+    ==> "GLOBAL VARIABLES" (USING VAR) ARE THE "PROPERTIES" OF THE WINDOW OBJECT.
+
+    ==> "GLOBAL FUNCTIONS" ARE THE "METHODS" OF THE WINDOW OBJECT.
+
+    ==> "GLOBAL OBJECTS" ARE THE "SUB OBJECTS" OF THE WINDOW OBJECT.
+
+    ==> ONLY VAR KEYWORD WILL BECOME THE PROPERTY OF WINDOW OBJECT, LET AND CONST WON'T.
+
+    ==> 'LET' AND 'CONST' WILL BE "UNDEFINED" IF CALL IT USING WINDOW OBJECT.
+
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browser Object Model (BOM)</title>
+</head>
+<body>
+        <h1>Browser Object Model</h1>
+</body>
+    <script>
+        var x = "Nehal Panchal"; // IT WILL BECOME THE PROPERTY OF WINDOW OBJECT
+
+        // WINDOW OBJECT IS THERE, NO NEED TO WRITE
+        console.log(x);  // Nehal Panchal
+
+        // OBJECT_NAME.PROPERTY_NAME
+        console.log(window.x); // Nehal Panchal
+
+
+        // --------------FUNCTION AS A METHOD-----------------
+
+        function temp(){
+            console.log("Hey, This would become the method of window object");
+        }
+        // WINDOW OBJECT IS THERE, NO NEED TO WRITE
+        temp(); // function call
+
+        // OBJECT_NAME.METHOD_NAME
+        window.temp(); // function call
+
+        // -----------------LET AND CONST-----------------------
+
+        let y = "Panchal";
+
+        console.log(y); // Panchal
+        console.log(window.y); // Undefined (LET IS NOT PROPERTY OF WINDOW OBJECT)
+
+        // ----------------DEFAULT METHODS OF WINDOW OBJECT-----------------
+
+        // YOU CAN CALL THESE METHODS WITHOUT WINDOW OBJECT. WINDOW OBJECT IS THERE BECAUSE IT IS DEFAULT OBJECT OF THE BROWSER.
+
+        let demo = prompt("DO YOU WANT TO SHOW DEFAULT METHODS? Y/N ?");
+
+        if(demo == "Y" || demo == "y"){
+
+            window.alert("This is Alert method of Window object");
+
+            window.prompt("This is Prompt method of window object"); // RETURNS VALUE
+ 
+            window.confirm("This is Confirm method of window object"); // RETURNS BOOLEAN
+        }
+
+    </script>
+</html>

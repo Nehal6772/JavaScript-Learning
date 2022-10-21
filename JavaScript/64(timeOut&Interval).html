@@ -1,0 +1,101 @@
+<!-- 
+
+    
+
+    ==>  TIME OUT: USER WILL WAIT FOR NUMBER OF SPECIFIED MILISECOND. 
+
+        ==> FUNCTION: setTimeOut(function_name, Time in ms);
+
+        EX: ALL SYNTAX ARE CORRECT.
+
+        // REGULAR SYNTAX
+        1) setTimeOut(temp, 3000); // RETURNS TIMEOUTID
+            
+            function temp(){
+                alert("hello");
+            }
+
+        // USING NORMAL FUNCTION
+        2)  setTimeOut(function temp(){
+                alert("hello");
+            }, 3000);
+
+        // USING ARROW FUNCTION
+        3)  setTimeOut(temp = () => {
+                alert("hello");
+            }, 3000);
+
+        // USING ANONYMOUS FUNCTION WITH ARROW FUNCTION
+        4)  setTimeOut(()=>{
+                alert("hello");
+            }, 3000);
+
+        ==> "timeoutId" IS HELPFUL TO MANUPLATE ANY OPERATIONS OF THE setTimeOut() FUNCTION WITH RESPECT TO SPECIFIC TIME.
+
+        ==> EX: USER SET THE ALARAM FOR 6AM, AND HE WOKE UP 5:30AM SO HE WILL OFF THE ARALM.
+    
+        ==> IN SUCH SCENARIO, WE NEED TIMEOUTID TO OFF THR TIMER OR AN ALARM.
+
+        ==> clearTimeout(timeoutId); : IT WON'T EXECUTE THE CODE AFTER 3 SECONDS. (OFF THE TIMER)
+
+    ----------------------------------------------------------------------
+
+    ==> SET INTERVAL: REPEAT THE TIMER AFTER SPECIFIED TIME INTERVAL.
+
+        EX: setInterval(Function, Time in MS); // REPEAT AFTER GIVEN TIME INTERVAL.
+
+    ==> TASK: WHEN USER CLICK ON STOP BUTTON, IT WILL STOP REPEATING.
+
+    ==> clearInterval(intervalId); : IT WILL STOP THE INTERVAL.
+
+
+
+
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time out & Time Interval</title>
+</head>
+<body>    
+    <button id="btn1">Stop Time Out</button>
+    <button id="btn2">Stop Interval</button>
+</body>
+    <script>
+
+        // ------------------------- setTimeOut() Method -------------------------------------
+
+        // hello WILL BE PRINTED IN WINDOW AFTER 3 SECOND.
+        let timeoutId = setTimeout(temp, 3000); // FUNCTION RETURNS TIMEOUTID
+
+        function temp(){
+            console.log("Time out Executed.");
+        }
+        
+        let btn1 = document.getElementById("btn1");
+        
+        btn1.addEventListener("click", function(){
+            clearTimeout(timeoutId); // TURN OFF THE TIMER AND IT WON'T DISPLAY AFTER 3 SECOND.
+        });
+
+
+        // ------------------------- setInterval() Method -------------------------------------
+
+        let intervalId = setInterval(temp1, 1000); // RETURNS INTERVAL ID
+
+        function temp1(){
+            console.log("Time Interval Executed.");
+        }
+
+        let btn2 = document.getElementById("btn2");
+        
+        btn2.addEventListener('click', function(){
+            clearInterval(intervalId); // STOP INTERVAL WHEN CLICKED ON STOP
+        });
+
+    </script>
+</html>

@@ -1,0 +1,49 @@
+<!-- DOM METHOD:
+
+    ==> THIS FUNCTION HELPS US TO PREVENT THE DEFAULT BEHAVIOUR OF DOM. 
+
+    ==> THIS METHOD COMES FROM THE DEFAULT PARAMETER (val) OF FUNCTION IN EVENT LISTENER.
+        EX: 
+            obj_name.addEventListener("click", function(val)
+            {
+                val.preventDefault(); // CLICK EVENT WILL BE PREVENTED.
+            });
+
+    ======> TASK: OPEN THE LINK OF GOOGLE WHICH IS GIVEN IN ANCHOR TAG.
+
+        ==> DEFAULT BEHAVIOUR: IT WILL OPEN USING SINGLE CLICK WHEN THE USER WILL CLICK THE LINK.
+
+        ==> REQUIREMENT: WE WANT TO PREVENT THE DEFAULT BEHAVIOUR (PREVENT SINGLE CLICK) AND OPEN IT THROUGH "DOUBLE CLICK". 
+
+ -->
+
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prevent Default</title>
+ </head>
+ <body>
+        <!-- I WANT TO OPEN THIS LINK THROUGH DOUBLE CLICK. DESABLE SINGLE CLICK -->
+        <!-- DEFAULT NATURE OF THIS ANCHOR TAG IS SINGLE CLICK AND IT WILL REDIRECT TO GOOGLE SEARCH ENGINER -->
+
+        <a id="google" href="https://www.google.com">Click Me: Double Click</a>
+ </body>
+    <script>
+        let temp = document.getElementById("google");
+        
+        temp.addEventListener("click", function(val){
+            val.preventDefault();
+            console.log("Single click is desabled!!");
+        });
+
+
+        // REDIRECT TO GOOGLE SEARCH ENGINER THROUGH DOUBLE CLICK
+        temp.addEventListener("dblclick", function(){
+            window.location.href = "https://www.google.com";
+        });
+
+    </script>
+ </html>

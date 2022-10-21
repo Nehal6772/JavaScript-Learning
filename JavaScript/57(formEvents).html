@@ -1,0 +1,73 @@
+<!-- 
+
+    =====> FORM EVENTS: 
+
+            1) FOCUS: WHEN INPUT ELEMENT GET CURSOR TO WRITE SOMETHING.
+            2) BLUE: WHEN INPUT ELEMENT LOSE THE FOCUS FROM THE ELEMENT.
+            3) CHANGE: WHEN INPUT ELEMENT CHANGES ITS VALUE.
+            4) SUBMIT: WHEN THE VALUE OF INPUT ELEMENT SUBMITTED.
+
+
+    => WHEN THE PAGE LOADS ON THE BROWSER, WE CAN ALSO HAVE A AUTO FOCUS OF ANY INPUT FEILD ACCORDING TO WHAT WE WANT. 
+
+        => AUTOFOCUS IS AN ATTRIBUTE OF HTML ELEMENT.
+        => SYNTAX: <input type="text" id="fname" autofocus>
+
+    ==> CHANGE EVENT WILL OCCURE WHEN THE ELEMENT LOSE THE FOCUS AND BECOME BLUR EVENT.
+
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Events</title>
+</head>
+<body>
+
+    <label> Form Events: </label>
+    <input type="text" id="name" value="Nehal Panchal"> <br><br>
+    <button id = "get">Get Focus</button>
+    <button id = "lose">lose Focus</button>
+    <button id = "clr">Clear</button>
+
+</body>
+    <script>
+        let name = document.getElementById("name");
+        let btn1 = document.getElementById("get");
+        let btn2 = document.getElementById("lose");
+        let btn3 = document.getElementById("clr");
+    
+        btn1.addEventListener("click", getFocus);
+        btn2.addEventListener("click", loseFocus);
+        btn3.addEventListener("click", clearValue);
+    
+        function getFocus(){
+            // FIRST CLICK AND THEN FOCUS EVENT WILL OCCURE
+            name.focus();
+            console.log("Get focus successfully.");
+            name.style.background = "yellow";
+        }
+
+        function loseFocus(){
+            // FIRST CLICK AND THEN BLUR EVENT WILL OCCURE
+            name.blur();
+            console.log("lose focus.");
+            name.style.background = "white";
+        }
+
+        // BACK TO ORIGINAL VALUE AS NEHAL PANCHAL AFTER CHANGE
+        function clearValue(){
+            name.value = "Nehal Panchal";
+        }
+
+        // WHEN THE USER MODIFIES OR CHANGES THE VALUE OF A FORM ELEMENT
+        // EVENT WILL TRIGGER WHEN THE FORM LOSE THE FOCUS AFTER CHANGE AND BECOME BLUR.
+        name.addEventListener("change", function(){
+            console.log('Value has changed.');
+        });
+
+    </script>
+</html>

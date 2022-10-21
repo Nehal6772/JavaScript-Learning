@@ -1,0 +1,45 @@
+<!-- 
+    => WHEN PAGE LOADES, TWO THINGS WILL HAPPEN.
+    
+    1) DOMContentEventLoaded event trigger:
+    ==> IT LOADS HTML CONTENT FROM THE WEB PAGE AND BUILD DOM TREE.
+        -> LOAD HTML AND CREATE DOM TREE.
+
+    ==> IT DOES NOT LOAD EXTERNAL RESOURCES (OUT OF WEB PAGE) LIKE EXTERNAL CSS, JAVASCRIPT, IMAGES ETC. 
+        -> (LINK OF EXTERNAL RESOURCES IN THAT WEB PAGE DOES NOT GET LOADED)
+
+    2) LOAD EVENT:
+    ==> HTML CONTENTS + EXTERNAL RESOURCES = LOAD EVENT OCCURES WHEN WHOLE WEB PAGE LOADED.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Load Event</title>
+</head>
+<body>
+    <img src="/bedroom.jpg" id="pic">
+
+</body>
+    <script>
+
+        let temp = document.getElementById("pic");
+        // ONLY HTML CONTENT WILL BE LOADED AND DOM TREE WILL BE CREATED
+        window.addEventListener("DOMContentLoaded", function(){
+            console.log("DOM Tree created.");
+        });
+
+        // DOM TREE PLUS EXTERNAL RESOURCES WILL BE LOADED
+        window.addEventListener("load", function(){
+            console.log("Whole Web page is loaded.");
+        });
+        
+    </script>
+</html>
+
+
+
+

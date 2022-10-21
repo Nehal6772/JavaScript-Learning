@@ -1,5 +1,5 @@
 <!-- 
-    => WE CAN ADD DIFFERENT EVENT LISTENERS ON THE SAME ELEMENT (BUTTON). 
+    => WE CAN ADD MULTIPLE EVENTLISTENERS OF DIFFERENT EVENTS ON THE SAME ELEMENT (BUTTON). 
         EX: CLICK ON BUTTON, 
             DOUBLE CLICK ON BUTTON, 
             MOUSEOVER ON BUTTON ETC..
@@ -66,6 +66,11 @@
         // WHEN MOUSE STARTED MOVING OVER THE BUTTON
         btn.addEventListener("mousemove", function(){
             console.log("Mouse is moving.")
+        });
+
+        // WHEN MOUSE SCROLLING OVER THE BUTTON (UP AND DOWN)
+        btn.addEventListener("mousewheel", function(){
+            console.log("rotating a wheel button.")
         });
 
         // ONLY WORKS IN FIREFOX.

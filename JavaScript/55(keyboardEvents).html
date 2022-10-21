@@ -1,0 +1,68 @@
+<!-- 
+
+    ====> KEYBOARD EVENTS:
+            1) KEY UP: WHEN YOUR KEY IS UP FROM THE INPUT ELEMENT. (AFTER WRITE)
+            2) KEY DOWN: WHEN YOUR KEY IS DOWN INTO THE INPUT ELEMENT. (START WRITTING)
+            3) KEY PRESS: WHEN YOU START TYPING ANYTHING INTO INPUT ELEMENT.
+
+
+    ==> THIS EVENTS CAN BE APPLIED ON WHOLE WINDOW AS WELL INSTEAD OF SINGLE ELEMENT.
+
+    SYSNTAX FOR THE ELEMENT:
+        obj_name.addEventListener();
+
+    SYNTAC FOR THE WINDOWS:
+        window.addEventListener();
+
+    ==> WHEN WE USE KEYDOWN, KEYPRESS, KEYUP EVENTS, ONE PARAMETER IS BYDEFAULT PASS THROUGH ITS PARAMETER IN NORMAL FUNCTION.
+
+        EX: obj_name.addEventListener("keypress", temp);
+
+            function temp(nehal){
+                ...
+            }
+
+            // this 'nehal' parameter is by default passed through the event.
+ -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Keyboard Events</title>
+</head>
+<body>
+
+    <form>
+        <label> Type Something:</label>
+        <input type="text" id="user" autofocus>
+    </form> 
+
+</body>
+    <script>
+        let temp = document.getElementById("user");
+
+        // KEY DOWN AND KEY PRESS IS ALMOST SIMILAR.
+
+        temp.addEventListener("keyup", function(){
+            console.log("Key up!");
+        });
+    
+        temp.addEventListener("keydown", function(){
+            console.log("Key down!");
+        });
+
+        temp.addEventListener("keypress", function(){
+            console.log("Key pressed!");
+        });
+    
+        // THIS WILL HELPFUL TO KNOW WHICH KEY IS PRESSED ON WINDOW USING KEY PROPERTY.
+        // THIS CAN BE APPLIED ON ALL KEYBOARD EVENTS.
+        window.addEventListener("keydown", checkKey);
+
+        function checkKey(evn){
+            console.log(evn.key);
+        }
+
+    </script>
+</html>

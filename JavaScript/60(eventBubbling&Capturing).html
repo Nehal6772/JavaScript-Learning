@@ -1,0 +1,128 @@
+<!-- 
+
+    ==> PRIORITY IS GIVEN TO EVENT CAPTURING FIRST (TRUE IN 3RD ARG)  AND THEN BUBBLING WILL FOLLOW ON ITS OWN WAY (INSIDE TO OUTSIDE). (IN MIXTURE OF BUBBLING AND CAPTURING)
+
+    ==> IN PRIORITY OF EVENT CAPTURING, IT WILL FOLLOW OUTSIDE TO INSIDE FIRST. 
+
+    ==> FOR NORMAL BEHAVIOUR, KEEP ALL TRUE FOR BUBBLING OR ALL FALSE FOR CAPTURING.
+
+
+    1) EVENT BUBBLING: FROM INSIDE TO OUTSIDE.
+
+        ==> FIRST INNER ELEMENT THEN OUTER ELEMENT WILL BE ACTIVATED.
+            1. BUTTON
+            2. DIV
+            3. BODY
+            4. HTML
+            5. DOCUMENT
+    
+    2) EVENT CAPTURING: FROM OUTSIDE TO INSIDE.
+
+        ==> FIRST OUTER ELEMENT THEN INNER ELEMENT WILL BE ACTIVATED.
+            1. DOCUMENT
+            2. HTML
+            3. BODY
+            4. DIV
+            5. BUTTON
+
+    ==> SYNTAX: obj.addEventListener("Event", Function(), useCapture);
+
+        ==> useCapture = FALSE: BUBBBLING (DEFAULT BEHAVIOUR: FALSE)
+        ==> useCapture = TRUE: CAPTURING
+
+    ----
+
+    ==> WHENEVER WE WANT ONLY BUTTON TO EXECUTE AND REMAINING DIV AND BODY DON'T, THEN WE HAVE A METHOD CALLED stopPropagation() WHICH COME FROM THE DEFAULT PARAMETER OF THE FUNCTION OF AN EVENT.
+
+        EX: val.stopPropagation(); 
+
+        => THIS METHOD STOPS PROPAGATION OF ITS PARENT ELEMENTS.
+        => ONCE THIS METHOD IS CALLED ON ANY ELEMENT (BUTTON), THAT PARTICULAR ELEMENT WILL BE TRIGGERS WHEN WE CLICK ON THAT ELEMEMT (BUTTON), AND IT STOP PROPAGATING ITS PARENT ELEMENT.
+        => WHEN WE CLICK ON ITS PARENT ELEMENT (DIV OR BODY), IT WILL FOLLOW ITS OWN WAY OF PROPAGATION.
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Bubbling & Event Capturing</title>
+    <style>
+        body{
+            background-color: cadetblue;
+        }
+
+        div{
+            margin: 100px;
+            border: 10px solid black;
+            padding: 100px;
+            background-color: bisque;
+        }
+
+        #myBtn{
+            background-color: whitesmoke;
+            border: 3px solid blue;
+            margin-left: 280px;
+            border-radius: 80%;
+            padding: 20px;
+            
+        }
+
+        #myBtn:hover {
+            background-color: blue;
+        }
+    </style>
+</head>
+<body id="myBody"> <b>BODY</b>
+    <div id="myDiv"><b>DIV</b>
+        <button id="myBtn">Button</button>
+    </div>
+</body>
+    <script>
+       
+        let myDiv = document.getElementById("myDiv");
+        let myBtn = document.getElementById("myBtn");
+
+        // PRIORITY IS GIVEN TO EVENT CAPTURING FIRST (TRUE IN 3RD ARG)  AND THEN BUBBLING WILL FOLLOW ON ITS OWN WAY (INSIDE TO OUTSIDE).
+
+        // IN PRIORITY OF EVENT CAPTURING, IT WILL FOLLOW OUTSIDE TO INSIDE FIRST. 
+
+        // FOR NORMAL BEHAVIOUR, KEEP ALL TRUE FOR BUBBLING OR ALL FALSE FOR CAPTURING.
+
+        // BUTTON -> DIV -> BODY
+        myDiv.addEventListener("click", divClicked);
+        myBtn.addEventListener("click", btnClicked);
+        document.body.addEventListener("click", bodyClicked);
+
+        // BODY -> DIV -> BUTTON
+        // myDiv.addEventListener("click", divClicked, true);
+        // myBtn.addEventListener("click", btnClicked, true);
+        // document.body.addEventListener("click", bodyClicked, true);
+
+        // DIV -> BUTTON -> BODY
+        // myDiv.addEventListener("click", divClicked, true);
+        // myBtn.addEventListener("click", btnClicked, true);
+        // document.body.addEventListener("click", bodyClicked);
+
+        function btnClicked(val){
+            console.log("Button has clicked.");
+            // ONLY BUTTON WILL BE CLICKED. STOP PROPAGATION OF ITS PARENT: DIV & BODY
+            val.stopPropagation();
+        
+        }
+
+        function divClicked(v){
+            console.log("Div has clicked.");
+
+            // ONLY DIV WILL BE CLICKED. AND STOP PROPOGATION OF PARENT: BODY
+            v.stopPropagation();
+            
+        }
+
+        function bodyClicked(){
+            console.log("Body has clicked.")
+        }
+
+    </script>
+</html>

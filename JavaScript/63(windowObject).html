@@ -1,0 +1,95 @@
+<!-- 
+    ==> KNOW THE HEIGHT OF THE WINDOWS.
+        
+        1. INNER HEIGHT
+        2. INNER WIDTH
+        
+        3. OUTER HEIGHT
+        4. OUTER WIDTH
+
+    ==> INNER HEIGHT AND INNER WIDTH: AREA OF ACTUAL WEB PAGE. (yellowgreen AREA)
+        => INNER WILL CALCULATE THE AREA WICH IS VISIBLE IN THE SCREEN.
+        => IF YOU OPEN THE CONSOLE, IT WILL DISPLAY THE CALCULATION WHICH IS VISABLE COLORED AREA ONLY.
+
+    ==> OUTER HEIGHT AND OUTER WIDTH: AREA OF WHOLE WINDOW. (WHOLE BROWSER)
+
+    --------------- OPEN NEW WINDOW USING OPEN() METHOD --------------
+
+    EX: window.open(URL, 'NAME', FEATURES); // SAPERATE NEW WINDOW WILL OPEN.
+
+    ==> NAME PARAMETER IS USED TO GIVE THE REFERENCE TO CHANGE THE URL.
+        SYNTAX: window.open("new URL", "NAME of previous URL")
+
+    ==> SET "POPUP ENABLE" IN A RIGHT TOP CORNER OF THE BROWSER IF ITS NOT WORKING.
+
+    --------------- CLOSE OPENED WINDOW USING CLOSE() METHOD --------------
+
+        let openWin = window.open(URL, 'NAME', FEATURES);
+        
+    EX: openWin.close();
+
+
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>window object</title>
+    <style>
+
+        body{ background-color: yellowgreen; }
+
+    </style>
+</head>
+<body>
+    <button id="btnG">Google</button>
+    <button id="btnF">Facebook</button>
+    <button id="btnC">Close window</button>
+</body>
+    <script>
+
+        console.log("Inner Height: " + window.innerHeight);
+        console.log("Outer Height: " + window.outerHeight);
+
+        console.log("Inner Width: " + window.innerWidth);
+        console.log("Outer Width: " + window.outerWidth);
+
+        // --------------------OPEN WINDOW -----------------------
+
+        let tempG = document.getElementById("btnG");
+        let tempF= document.getElementById("btnF");
+        let win = undefined; // MAKE IT GLOBAL
+
+        let url = "https://www.google.com";
+        let features = "height = 500px, width = 800px, toolbar=no, menubar=no";
+
+        tempG.addEventListener("click", function(){
+            //window.open(); // NEW BLANK "TAB" WILL BE OPENED.
+            
+            // SAPERATE "WINDOW" WILL BE OPEND WITH THE DEFINED ARGUMENTS.
+            win = window.open(url, "Google", features); // LIKE TORRENT
+        });
+
+        // NAME IS USED TO GIVE THE "REFERENCE" TO CHANGE THE URL.
+        // IT WILL CHANGE THE URL OF GOOGLE TO FACEBOOK.COM
+        // OPENED WINDOW OF GOOGLE WILL CHANGE TO FACEBOOK WHEN USE CLICK ON FACEBOOK
+        // IT WON'T OPEN THE SAPERATE WINDOW FOR FACEBOOK.
+        // IT WILL OPEN SAPERATE TAB FOR FACEBOOK IF YOU DIRECTLY CLICK ON FACEBOOK
+    
+        tempF.addEventListener("click", function(){
+            window.open("https://www.facebook.com", "Google")
+        });
+
+        // -------------------- CLOSE WINDOW --------------------------
+
+        let tempC = document.getElementById("btnC");
+
+        tempC.addEventListener("click", function(){
+            win.close();     
+        });
+
+    </script>
+</html>

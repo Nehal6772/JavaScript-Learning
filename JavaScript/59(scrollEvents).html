@@ -1,0 +1,69 @@
+
+<!-- 
+
+    ====> SCROLL EVENTS:
+            1) SCROLL: 
+            2) WHEEL:
+
+    1) SCROLL EVENT:
+
+    ==> SCROLL EVENT WILL TRIGGER ON BOTH 'SCROLL DOWN' AND 'SCROLL UP'.
+
+    2) WHEEL EVENT: PASS PARAMETER INTO A FUNCTION TO USE IT'S PROPERTY 'deltaY'.
+
+    ==> WE CAN DETECT WEATHER 'SCROLLING UP' IS HAPPENING OR 'SCROLLING DOWN' USING PROPERTY OF DEFAULT PARAMETER 'deltaY'.
+
+        ==> deltaY GENERATES A NUMBER. IF THAT NUMBER IS LESS THAN 0 WHICH MEANS SCROLLING UP (NEGATIVE NUMBER), AND IF THAT NUMBER IS GREATER THAN 0 WHICH MEANS SCROLLING DOWN (POSITIVE NUMBER).
+
+            ==> deltaX: Horizontal Scrolling (RIGHT TO LEFT)
+            ==> deltaY: Vertical Scrolling  (TOP TO DOWN)
+
+    3) WINDOW PROPERTY : pageYoffset
+
+    ==> WE CAN ALSO IDENTIFY THE EXACT PIXCEL OF SCROLLING USING PROPERTY.
+    ==> IT WILL WORK WITH BOTH THE EVENTS 'SCROLL' AND 'WHEEL'.
+
+        => pageYOffset: Y = RETURNS SCROLLING PIXCELS : VERTICAL (TOP TO BOTTOM)
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scroll event</title>
+</head>
+<body>
+    <div style="height: 1000px; width: 10000px;" id="myDiv">Hello</div>
+</body>
+    <script>
+        let temp = document.getElementById("myDiv");
+
+        window.addEventListener('scroll', function(){
+            console.log("scrolling started.");
+        });
+
+        // TO KNOW WHETHER IT IS SCROLL UP OR SCROLL DOWN 
+        // deltaY: VERTICAL SCROLLING
+        window.addEventListener("wheel", function(evn){
+            if(evn.deltaY < 0){
+                console.log("Scrolling up");
+            }else{
+                console.log("scrolling down");
+            }
+        })
+       
+        // CHANGE BACKGROUND COLOR TO RED WHEN THE USER WHEN SCROLLED 500 PIXCELS IN ENTIRE WINDOW.
+        // IT WILL WORK WITH BOTH EVENT 'SCROLL' AND 'WHEEL'.
+        window.addEventListener("scroll", function(){
+            if(window.pageYOffset > 500){
+                document.body.style.backgroundColor = "red";
+            }else{
+                document.body.style.backgroundColor = "white";
+            }
+            console.log(Math.floor(window.pageYOffset));     
+        });
+
+    </script>
+</html>
