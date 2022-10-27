@@ -1,0 +1,50 @@
+<!-- 
+
+    ==> NAVIGATOR OBJECT IS SUB OBJECT OF WINDOW OBJECT.
+
+    ==> LIKE GOOGLE ANALYTICS.
+
+    ==> IT IS USED TO GET THE INFORMATION ABOUT THE USER (CURRENT) WEB BROWSER.
+
+    => EX: window.navigator.appName | OR | navigator.appName (BOTH ARE VALID)
+
+    
+
+ -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigator Object</title>
+</head>
+<body>
+    
+</body>
+    <script>
+        // WINDOW OBJECT IS THERE, NO NEED TO WRITE
+        console.log(window.navigator.appName); // Netscape
+        console.log(navigator.appVersion); // 5.0 (Window NT 10.0; win64; x64)
+        console.log(navigator.appCodeName); // Mozilla
+        console.log(navigator.cookieEnabled); // TRUE: COOKIE IS ENABLE IN BROWSER
+        console.log(navigator.userAgent); // Mozilla 5.0 
+        console.log(navigator.platform); // win32
+
+        // METHOD
+        console.log("Java: "+window.navigator.javaEnabled()); // Boolean: false
+
+        console.log(window.navigator.language); // BROWSER LANGUAGE
+        console.log(navigator.languages);
+        console.log(navigator.hardwareConcurrency);
+        console.log(navigator.locks);
+        console.log(navigator.geolocation);
+        
+        console.log(navigator.webdriver); // False
+        console.log(navigator.product); // Gecko
+        console.log(navigator.plugins); // RETURNS PLUGIN ARRAY OF BROWSER
+       
+    </script>
+</html>

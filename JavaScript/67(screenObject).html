@@ -1,0 +1,39 @@
+<!-- 
+    ==> GIVE THE INFORMATION ABOUT THE SCREEN ON WHICH YOUR WEBSITE VIEW.
+
+    ==> LIKE GOOGLE ANALYTICS.
+
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Screen Object</title>
+</head>
+<body>
+    
+</body>
+    <script>
+
+        // BROWSER'S HEIGHT AND WIDHT IS DIFFERET.
+        console.log(screen.height); // 982
+        console.log(screen.width); // 1746
+        
+        // 24 BITS = 16,777,216 DIFFERENT COLORS 
+        // 32 BITS = 4,294,967,296 DIFFERENT COLORS 
+
+        console.log(screen.colorDepth); // RETURN BITS : 24
+        console.log(screen.pixelDepth); // RETURN BITS : 24
+
+        // DIFFERENT VIEWS: MOBILE VIEW, TAB VIEWS
+        // LANDSCAPE OR PORTRAIT
+        console.log(screen.orientation); // RETURNS SCREENORIANTATION
+        
+        console.log(screen.availHeight); // 939
+        console.log(screen.availWidth); // 1746
+
+    </script>
+</html>

@@ -23,14 +23,15 @@
         }
         
     
-    TO CALL THIS: OBJ_NAME.METHOD_NAME = FUNCTION_NAME();
+    TO CALL THIS: OBJ_NAME.METHOD_NAME = FUNCTION_NAME(); // NO ERROR: DON'T USE
                         OR
-                 OBJ_NAME.METHOD_NAME = FUNCTION_NAME;
-                 OBJ_NAME.METHOD_NAME();
+                 OBJ_NAME.METHOD_NAME = FUNCTION_NAME; // CORRECT APPROCH
+                 OBJ_NAME.METHOD_NAME(); // CORRECT APPROCH
     
 --------------------------------------------------------------
 
     2) USING ANONYMOUS FUNCTION.
+
         EX: OBJ_NAME.METHOD_NAME = FUNCTION ()
             {
                 FUNCTION BODY
@@ -41,6 +42,7 @@
 --------------------------------------------------------------
 
     3) INSIDE THE OBJECT: WITH OTHER PROPERTIES USING ANONYMOUS FUNCTION
+    
         EX: 
         LET OBJECT_NAME = {
                             METHOD_NAME = FUNCTION ()
