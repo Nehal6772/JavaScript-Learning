@@ -1,0 +1,49 @@
+<!-- 
+
+    ==> Split() METHOD RETUENS THE ARRAY OF TEXTS.
+
+    ==> TO COUNT WORDS: TAKE WRITTERN TEXTS VALUE, SPLIT IT USING SPACE, AND USE LENGTH METHOD TO FIND THE LENGTH OF A WORD, AND ADD IT INSIDE THE COUNTER.
+
+    ==> TO COUNT CHARACTERS: TAKE WRITTERN TEXTS VALUE, AND USE THE LENGTH METHOD TO FIND THE LENGTH OF ALL CHARACTERS AND ADD IT INSIDE THE COUNTER.
+
+    ==> IT ONLY NEEDS SPLIT() METHOD & LENGTH PROPERTY.
+
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Counter</title>
+</head>
+<body>
+    <h2>Word Counter : Project - II</h2>
+
+    <textarea rows="10" cols="50" placeholder="Enter your Text here" id="textBox" autofocus></textarea>
+    <br>
+
+    <h3>
+        <span id="words">0</span> words 
+        <span id="chars">0</span> characters
+    </h3>
+
+</body>
+    <script>
+        let textbox = document.getElementById("textBox");
+    
+        textbox.addEventListener("input", function(){
+            let textValue = this.value.split(" "); 
+            document.getElementById("words").innerHTML = textValue.length; // words
+            document.getElementById("chars").innerHTML = this.value.length; // chars        
+        });
+
+        // texts.addEventListener("input", function(){
+        //     let splitArr = texts.value.split(" ");
+        //     words.value = splitArr.length;
+        //     chars.value = texts.length;
+        // });
+ 
+    </script>
+</html>
